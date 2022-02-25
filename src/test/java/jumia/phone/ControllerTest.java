@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import jumia.phone.controllers.CustomerController;
 import jumia.phone.entities.Customer;
 import jumia.phone.resource.CustomerResource;
 
@@ -20,11 +19,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;;
 
+@WebMvcTest({CustomerResource.class})
 @RunWith(SpringRunner.class)
-@WebMvcTest({CustomerController.class})
 public class ControllerTest {
 
     @Autowired
@@ -41,8 +40,7 @@ public class ControllerTest {
                 new Customer(2, "Filimon Embaye", "(251) 914701723"),
                 new Customer(3, "Yosaf Karrouch", "(212) 698054317"),
                 new Customer(4, "Edunildo Gomes Alberto", "(258) 847651504"),
-                new Customer(5, "JACKSON NELLY", "(256) 775069443"),
-                new Customer(6, "Walid Hammadi", "(212) 6007989253") 
+                new Customer(5, "JACKSON NELLY", "(256) 775069443")                
                 
         );
         ResponseEntity<PagedListHolder<Customer>> customerResponse = new  ResponseEntity<PagedListHolder<Customer>>(new PagedListHolder<Customer>(customerList), HttpStatus.OK);
@@ -50,9 +48,11 @@ public class ControllerTest {
         when(customerResource.retrieveAllCUstomers("*", "*",0,5)).thenReturn(customerResponse);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.get("/customersFiltered/*/*"))
+                MockMvcRequestBuilders.get("/customersFiltered/*/*/0/5"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{},{},{},{},{},{}]"));
+                .andExpect(jsonPath("$.nrOfElements").value("5"));
+                
+
     }
    
 }
