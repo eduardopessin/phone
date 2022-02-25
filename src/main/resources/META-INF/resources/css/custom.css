@@ -1,0 +1,21 @@
+#page-wrap {
+    width: 800px;
+    margin: 0 auto;    
+}
+#selCountry{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9px;
+}
+#selState{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9px;
+}
+#filter{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9px;
+}
+#grid{
+    width: 600px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9px;
+}
