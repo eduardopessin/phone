@@ -3,6 +3,7 @@ package jumia.phone;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
@@ -44,9 +45,9 @@ public class ControllerTest {
                 new Customer(6, "Walid Hammadi", "(212) 6007989253") 
                 
         );
-        ResponseEntity<List<Customer>> customerResponse = new  ResponseEntity<List<Customer>>(customerList, HttpStatus.OK);
+        ResponseEntity<PagedListHolder<Customer>> customerResponse = new  ResponseEntity<PagedListHolder<Customer>>(new PagedListHolder<Customer>(customerList), HttpStatus.OK);
 
-        when(customerResource.retrieveAllCUstomers("*", "*")).thenReturn(customerResponse);
+        when(customerResource.retrieveAllCUstomers("*", "*",0,5)).thenReturn(customerResponse);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/customersFiltered/*/*"))

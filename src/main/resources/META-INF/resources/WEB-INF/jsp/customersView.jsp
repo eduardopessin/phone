@@ -35,7 +35,7 @@
 		</select>
 	</td>
 	<td>
-		<input type="button" id="filter" value="filter" onclick="LoadUP()">
+		<input type="button" id="filter" value="filter" onclick="LoadUP(0)">
 	</td> 
 </tr>
 </table>
