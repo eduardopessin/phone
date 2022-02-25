@@ -26,12 +26,12 @@ function LoadUP(page) {
 					$.each(result.pageList, function(key, value) {
 						table += 
 							"<tr>"+
-								"<td>" + value.id + "</td>"+
-								"<td>" + value.name + "</td>"+
-								"<td>" + value.phone+ "</td>"+
-								"<td>" + value.country + "</td>"+
-								"<td>" + value.countryCode + "</td>"+
-								"<td>" + value.state + "</td>"+
+								"<td>" + value.id + 			"</td>"+
+								"<td>" + value.name + 			"</td>"+
+								"<td>" + value.phone+ 			"</td>"+
+								"<td>" + value.country + 		"</td>"+
+								"<td>" + value.countryCode + 	"</td>"+
+								"<td>" + value.state + 			"</td>"+
 							"</tr>";
 					});
 					if(result.pageList.length==0){
