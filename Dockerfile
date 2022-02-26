@@ -1,14 +1,14 @@
 FROM openjdk:11 as build
 WORKDIR /workspace/app
 
-RUN chmod +x ./mvnw
+
 
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-
+RUN chmod +x ./mvnw
 RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
