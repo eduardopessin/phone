@@ -21,7 +21,7 @@ function LoadUP(page) {
 	$("#customersJson").empty();
 	table = "";
 	
-				$.getJSON("http://localhost:8080/customersFiltered/"+country+"/"+state+"/"+ page +"/"+ pageSize, function(result) {
+				$.getJSON("customersFiltered/"+country+"/"+state+"/"+ page +"/"+ pageSize, function(result) {
 					table+=header;
 					$.each(result.pageList, function(key, value) {
 						table += 
